@@ -1,5 +1,10 @@
-from pyspark.sql import SparkSession
+import logging
 
+try:
+    from pyspark.sql import SparkSession
+except:
+    logging.warning("Could not load Spark!")
+    
 class DataFactorySparkSession:
     
     def __init__(self, 
