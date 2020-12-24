@@ -2,7 +2,6 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from .models import Base, DataFeed, Project, DataSet
 from .managers import ProjectManager, DataFeedManager, DataSetManager
-from .spark_utils import DataFactorySparkSession
 import os
 import datetime
 import logging 
@@ -33,6 +32,8 @@ class MicroDataFactory:
         self.s = Session()
     
     def get_spark_context(self, app_name):
+        from .spark_utils import DataFactorySparkSession
+        
         return DataFactorySparkSession(
             app_name, 
             self.user, 
