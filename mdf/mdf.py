@@ -2,7 +2,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from .models import Base, DataFeed, Project, DataSet
 from .managers import ProjectManager, DataFeedManager, DataSetManager
-from .spark_utils import DataFactorySparkSession
+#from .spark_utils import DataFactorySparkSession
 import os
 import datetime
 import logging 
@@ -32,15 +32,15 @@ class MicroDataFactory:
         Session = sessionmaker(bind=self.engine)
         self.s = Session()
     
-    def get_spark_context(self, app_name):
-        return DataFactorySparkSession(
-            app_name, 
-            self.user, 
-            self._password,
-            self.host, 
-            self.db_name, 
-            self.port
-        )
+    #def get_spark_context(self, app_name):
+    #    return DataFactorySparkSession(
+    #        app_name, 
+    #        self.user, 
+    #        self._password,
+    #        self.host, 
+    #        self.db_name, 
+    #        self.port
+    #    )
 
     def sql(self, query, limit=None):
         r = self.engine.execute(query)
