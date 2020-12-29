@@ -1,5 +1,11 @@
-from price_parser import Price
 import re
+import logging
+
+try:
+    from price_parser import Price
+except:
+    logging.warning("could not import price_parser only regex engine will be available")
+
 
 class NumberCleaner:
     
